@@ -1,0 +1,16 @@
+{# a form with action to new_game and get method #}
+<form action="{% url 'game:new_game' %}" method="get">
+    {# show a "New Game" submit button  #}
+    <input type="submit" value="New Game"/>
+</form>
+{# show a form with action to load_game and get method #}
+{# ____ #}
+    {# show a "Load Game" submit button #}
+    {# ____ #}
+    {# show "Game ID:" hint text#}
+    <p>Game ID:</p>
+    {# show a text input area to enter game_id#}
+    {# ____ #}
+    {# show err_msg #}
+    <p style="color:red;">{# ____ #}</p>
+{# ____ #}

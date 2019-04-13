@@ -1,0 +1,77 @@
+{% load get_item %}
+{# refer to "templatetags/get_item.py" for dict get_item filter #}
+
+{# table style #}
+<style>
+    table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+
+    tr {
+        height: 40px;
+    }
+
+    td {
+        width: 40px;
+        text-align: center;
+        vertical-align: middle;
+    }
+
+    form {
+        margin: auto;
+    }
+</style>
+
+{# show current player #}
+<p>Current Player: {{ game.CURRENT_PLAYER_DICT|get_item:game.current_player }}</p>
+
+{# show status #}
+<p>Status: {# ____ #}</p>
+
+{# show table #}
+<table>
+    {# for each row in board #}
+    {% for row in board %}
+        <tr>
+            {# for each cell in row #}
+            {# ____ #}
+                <td>
+                    {# if cell is of player 1, show player 1's mark gotten from MARK_DICT #}
+                    {# ____ #}
+                        {# ____ #}
+                        {# else if cell is of player 2, show player 2's mark gotten from MARK_DICT #}
+                    {# ____ #}
+                        {# ____ #}
+                        {# else if status is not unfinished,show a space #}
+                    {# ____ #}
+                        &nbsp;
+                    {# else show a form with action to mark and post method #}
+                    {# ____ #}
+                        {# ____ #}
+                            {# csrf_token for security #}
+                            {% csrf_token %}
+                            {# hidden inputs to set row and col #}
+                            <input type="hidden" name="row" value="{{ forloop.parentloop.counter0 }}">
+                            <input type="hidden" name="col" value="{{ forloop.counter0 }}">
+                            {# submit button #}
+                            <input type="submit" value=" ">
+                        {# ____ #}
+                    {# ____ #}
+                </td>
+            {# ____ #}
+        </tr>
+    {% endfor %}
+</table>
+<br>
+{# show "New Game" button if the game is unfinished #}
+{# ____ #}
+    <form action="{% url 'game:new_game' %}" method="get">
+        <input type="submit" value="New Game">
+    </form>
+{# ____ #}
+<br>
+{# show "Home" button with action to index and get method #}
+{# ____ #}
+    {# ____ #}
+{# ____ #}
