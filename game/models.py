@@ -1,7 +1,7 @@
 from django.db import models
 import json
 
-# dont change this definition
+# don't change this definition
 ____ = None
 
 
