@@ -5,12 +5,12 @@ ____ = None
 
 
 class Game(models.Model):
-    # player constants, used in turn and mark
+    # player constants, used in current player and mark
     PLAYER_NONE = 0
     PLAYER_1 = 1
     PLAYER_2 = 2
 
-    # turn choices
+    # current player choices
     # reference: https://docs.djangoproject.com/en/2.2/ref/models/fields/#choices
     CURRENT_PLAYER_CHOICES = (
         (PLAYER_1, 'Player 1'),
@@ -43,7 +43,7 @@ class Game(models.Model):
     # e.g. [[0,0,1],[2,0,0],[0,0,0]]
     BOARD_SIZE = 3
     BOARD_EMPTY = []
-    for _ in range(3):
+    for _ in range(BOARD_SIZE):
         BOARD_EMPTY.append([____] * ____)
     BOARD_EMPTY = json.dumps(BOARD_EMPTY)
     board = models.CharField(max_length=32, default=BOARD_EMPTY)
