@@ -27,7 +27,7 @@
 <p>Current Player: {{ game.CURRENT_PLAYER_DICT|get_item:game.current_player }}</p>
 
 {# show status #}
-<p>Status: {# ____ #}</p>
+<p>Status: {{ game.STATUS_DICT|get_item:game.status }}</p>
 
 {# show table #}
 <table>
@@ -35,20 +35,20 @@
     {% for row in board %}
         <tr>
             {# for each cell in row #}
-            {# ____ #}
+            {% for cell in row %}
                 <td>
                     {# if cell is of player 1, show player 1's mark gotten from MARK_DICT #}
-                    {# ____ #}
-                        {# ____ #}
+                    {% if cell == game.PLAYER_1 %}
+                        {{ game.MARK_DICT|get_item:game.PLAYER_1 }}
                         {# else if cell is of player 2, show player 2's mark gotten from MARK_DICT #}
-                    {# ____ #}
-                        {# ____ #}
+                    {% elif cell == game.PLAYER_2 %}
+                        {{ game.MARK_DICT|get_item:game.PLAYER_2 }}
                         {# else if status is not unfinished,show a space #}
-                    {# ____ #}
+                    {% elif game.status != game.STATUS_UNFINISHED %}
                         &nbsp;
-                    {# else show a form with action to mark and post method #}
-                    {# ____ #}
-                        {# ____ #}
+                        {# else show a form with action to mark and post method #}
+                    {% else %}
+                        <form action="{% url 'game:mark' game_id=game.id %}" method="post">
                             {# csrf_token for security #}
                             {% csrf_token %}
                             {# hidden inputs to set row and col #}
@@ -56,22 +56,22 @@
                             <input type="hidden" name="col" value="{{ forloop.counter0 }}">
                             {# submit button #}
                             <input type="submit" value=" ">
-                        {# ____ #}
-                    {# ____ #}
+                        </form>
+                    {% endif %}
                 </td>
-            {# ____ #}
+            {% endfor %}
         </tr>
     {% endfor %}
 </table>
 <br>
 {# show "New Game" button if the game is unfinished #}
-{# ____ #}
+{% if game.status != game.STATUS_UNFINISHED %}
     <form action="{% url 'game:new_game' %}" method="get">
         <input type="submit" value="New Game">
     </form>
-{# ____ #}
+{% endif %}
 <br>
 {# show "Home" button with action to index and get method #}
-{# ____ #}
-    {# ____ #}
-{# ____ #}
+<form action="{% url 'game:index' %}" method="get">
+    <input type="submit" value="Home">
+</form>
