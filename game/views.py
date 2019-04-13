@@ -3,6 +3,7 @@ from .models import Game
 from urllib.parse import urlencode
 import json
 
+# dont change this definition
 ____ = None
 
 
