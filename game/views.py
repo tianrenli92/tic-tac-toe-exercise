@@ -33,6 +33,9 @@ def index(request):
 def new_game(request):
     # create a game instance, save it, get its id and redirect to the game page
     ____
+    ____
+    ____
+    ____
 
 
 # check the game id and jump to the game page
