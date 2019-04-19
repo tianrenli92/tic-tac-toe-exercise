@@ -1,5 +1,8 @@
-{% load get_item %}
-{# refer to "templatetags/get_item.py" for dict get_item filter #}
+{% load get_value %}
+{# refer to "templatetags/get_value.py" for dict get_item filter #}
+{# reference: #}
+{# https://stackoverflow.com/questions/8000022/django-template-how-to-look-up-a-dictionary-value-with-a-variable #}
+{# https://docs.djangoproject.com/en/dev/howto/custom-template-tags/#writing-custom-template-filters #}
 
 {# table style #}
 <style>
@@ -24,10 +27,10 @@
 </style>
 
 {# show current player #}
-<p>Current Player: {{ game.CURRENT_PLAYER_DICT|get_item:game.current_player }}</p>
+<p>Current Player: {{ game.CURRENT_PLAYER_DICT|get_value:game.current_player }}</p>
 
 {# show status #}
-<p>Status: {{ game.STATUS_DICT|get_item:game.status }}</p>
+<p>Status: {{ game.STATUS_DICT|get_value:game.status }}</p>
 
 {# show table #}
 <table>
@@ -39,10 +42,10 @@
                 <td>
                     {# if cell is of player 1, show player 1's mark gotten from MARK_DICT #}
                     {% if cell == game.PLAYER_1 %}
-                        {{ game.MARK_DICT|get_item:game.PLAYER_1 }}
+                        {{ game.MARK_DICT|get_value:game.PLAYER_1 }}
                         {# else if cell is of player 2, show player 2's mark gotten from MARK_DICT #}
                     {% elif cell == game.PLAYER_2 %}
-                        {{ game.MARK_DICT|get_item:game.PLAYER_2 }}
+                        {{ game.MARK_DICT|get_value:game.PLAYER_2 }}
                         {# else if status is not unfinished,show a space #}
                     {% elif game.status != game.STATUS_UNFINISHED %}
                         &nbsp;

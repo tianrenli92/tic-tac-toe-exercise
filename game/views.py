@@ -23,6 +23,11 @@ def index(request):
     err_msg = ''
 
     # if request method is GET and err_msg is in GET parameters, update err_msg
+    # Note:
+    #   GET parameters are appended in the request URL
+    #   POST parameters are in the request body with the same format as GET
+    #   reference: https://stackoverflow.com/questions/14551194/how-are-parameters-sent-in-an-http-post-request
+
     if ____:
         ____
 
@@ -92,10 +97,6 @@ def mark(request, game_id):
         ____
 
     # if request method is not POST or row or col is not in in POST parameters, redirect to the game page
-    # Note:
-    #   GET parameters are appended in the request URL
-    #   POST parameters are in the request body with the same format as GET
-    #   reference: https://stackoverflow.com/questions/14551194/how-are-parameters-sent-in-an-http-post-request
     if ____:
         ____
 
